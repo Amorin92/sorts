@@ -915,31 +915,31 @@ public static void bucketSort(float[] arr, int n) {
 <pre>
 	<code>
 public static void countSort(int array[], int size) {
-int[] output = new int[size + 1];
-int max = array[0];
-for (int i = 1; i < size; i++) {
-if (array[i] > max) {
-max = array[i];
-}
-}
-int[] count = new int[max + 1];
-for (int i = 0; i < max; ++i) {
-count[i] = 0;
-}
-for (int i = 0; i < size; i++) {
-count[array[i]]++;
-}
-for (int i = 1; i <= max; i++) {
-count[i] += count[i - 1];
-}
+	int[] output = new int[size + 1];
+	int max = array[0];
+	for (int i = 1; i < size; i++) {
+		if (array[i] > max) {
+			max = array[i];
+		}
+	}
+	int[] count = new int[max + 1];
+	for (int i = 0; i < max; ++i) {
+		count[i] = 0;
+	}
+	for (int i = 0; i < size; i++) {
+		count[array[i]]++;
+	}
+	for (int i = 1; i <= max; i++) {
+		count[i] += count[i - 1];
+	}
 
-for (int i = size - 1; i >= 0; i--) {
-output[count[array[i]] - 1] = array[i];
-count[array[i]]--;
-}
-for (int i = 0; i < size; i++) {
-array[i] = output[i];
-}
+	for (int i = size - 1; i >= 0; i--) {
+		output[count[array[i]] - 1] = array[i];
+		count[array[i]]--;
+	}
+	for (int i = 0; i < size; i++) {
+		array[i] = output[i];
+	}
 }
 </code>
 </pre>
@@ -985,7 +985,7 @@ array[i] = output[i];
 
 
 				<article id="compare">
-					<h4 class="major">Comparação entre a implementação dos algoritmos</h4>
+					<h4 class="major">Comparação entre os algoritmos</h4>
 					<span class="image main"><img src="images/sorts.gif" alt="" /></span>
 					<p>Analisando os 10 algoritmos de ordenação nesse site, foi feita uma comparação gráfica entre eles. Sendo uma comparação de todos os algoritmos em caso médio, melhor caso e pior caso.</p>
 					<p>A análise foi feita para os seguintes códigos:</p>
