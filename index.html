@@ -43,7 +43,7 @@
 							<ul>
 								<li><a href="#heap">Heap Sort</a></li>
 								<li><a href="#bucket">Bucket Sort</a></li>
-								<li><a href="#count">Count Sort</a></li>
+								<li><a href="#count">Counting Sort</a></li>
 								<li><a href="#compare">comparação</a></li>
 							</ul>
 						</nav>
@@ -70,7 +70,12 @@
 								<p>A classificação por bolha, ou Bubble Sort, é um algoritmo básico para organizar uma sequência de números ou outros elementos na ordem correta. O método funciona examinando cada conjunto de elementos adjacentes na string, da esquerda para a direita, trocando suas posições se estiverem fora de ordem. O algoritmo então repete esse processo até que possa percorrer toda a string e não encontrar dois elementos que precisem ser trocados.</p>
 								<p>Como funciona a sua comparação?</p>
 								<span class="image main"><img src="images/bubble.jpg" alt="" /></span>
-								<p></p>
+								<h3>Complexidade</h3>
+								<li>Caso Médio: Θ(n²)</li>
+								<li>Melhor Caso: Θ(n)</li>
+								<li>Pior Caso: Θ(n²) </li>
+								<br>
+
 								<p>Código do Bubble Sort</p>
 								<pre>
 									<code>
@@ -745,7 +750,7 @@ public static void heapify(int[] arr, int n, int i) {
 </pre>
 <table>
 <tr>
-<th colspan="5" class="align-center">SHELL SORT</th>
+<th colspan="5" class="align-center">HEAP SORT</th>
 </tr>
 <tr>
 	<td>&nbsp;</td>
@@ -787,20 +792,200 @@ public static void heapify(int[] arr, int n, int i) {
 
 				<article id="bucket">
 					<h2 class="major">Bucket Sort</h2>
-					<span class="image main"><img src="images/sorts.gif" alt="" /></span>
-					<p>Bucket</p>
+					<span class="image main"><img src="images/bucket.gif" alt="" /></span>
+					<p>Bucket sort, ou bin sort, é um algoritmo de ordenação que funciona dividindo um vetor em um número finito de recipientes. Cada recipiente é então ordenado individualmente, seja usando um algoritmo de ordenação diferente, ou usando o algoritmo bucket sort recursivamente. </p>
+<p>O Bucket Sort tem complexidade linear Θ(n) quando o vetor a ser ordenado contém valores que são uniformemente distribuídos.</p>
+
+                        <h3>Complexidade</h3>
+                        <li>Caso Médio: Θ(n+k)</li>
+                        <li>Melhor Caso: Θ Θ(n+k)</li>
+                        <li>Pior Caso: Θ(n²) </li>
+                        <br>
+                        <h3>Código do Bucket Sort</h3>
+
+<h3>Funcionamento</h3>
+<p>Bucket sort funciona do seguinte modo:</p>
+<li> Inicialize um vetor de "baldes", inicialmente vazios.</li>
+<li> Vá para o vetor original, incluindo cada elemento em um balde.</li>
+<li> Ordene todos os baldes não vazios.</li>
+<li> Coloque os elementos dos baldes que não estão vazios no vetor original.</li>
+
+<span class="image main"><img src="images/bucket2.png" alt="" /></span>
+<br>
+
+<h3>Código do Bucket Sort</h3>
+<pre>
+	<code>
+public static void bucketSort(float[] arr, int n) {
+	if (n <= 0) {
+		return;
+	}
+	@SuppressWarnings("unchecked")
+	ArrayList<Float>[] bucket = new ArrayList[n];
+	for (int i = 0; i < n; i++) {
+		bucket[i] = new ArrayList<>();
+	}
+
+	for (int i = 0; i < n; i++) {
+		int bucketIndex = (int) arr[i] * n;
+		bucket[bucketIndex].add(arr[i]);
+	}
+
+	for (int i = 0; i < n; i++) {
+		Collections.sort((bucket[i]));
+	}
+
+	int index = 0;
+	for (int i = 0; i < n; i++) {
+		for (int j = 0, size = bucket[i].size(); j < size; j++) {
+			arr[index++] = bucket[i].get(j);
+		}
+	}
+}
+</code>
+</pre>
+<table>
+<tr>
+<th colspan="5" class="align-center">BUCKET SORT</th>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>100.000</td>
+<td>250.000</td>
+<td>500.000</td>
+<td>1.000.000</td>
+</tr>
+<tr>
+<td>CASO MÉDIO</td>
+<td>0,0315158</td>
+<td>0,0266823</td>
+<td>0,0315869</td>
+<td>0,3027816</td>
+</tr>
+<tr>
+<td>MELHOR CASO</td>
+<td>0,0071938</td>
+<td>0,017939</td>
+<td>0,0125623</td>
+<td>0,0652403</td>
+</tr>
+<tr>
+<td>PIOR CASO</td>
+<td>0,0189336</td>
+<td>0,017703</td>
+<td>0,0196256</td>
+<td>0,022157</td>
+</tr>
+</table>
+	<span class="image main"><img src="images/grafico_bucket.png" alt="" /></span>
+	<p>Os valores apresentados acima estão em <b>segundos</b>, referente ao processamento de cada quantidade de elementos inserida no vetor</p>					
+
 				</article>
 
 				<article id="count">
-					<h2 class="major">Count Sort</h2>
-					<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
-					<p>count</p>
+					<h2 class="major">Counting Sort</h2>
+					<span class="image main"><img src="images/count.gif" alt="" /></span>
+					<p>É um algoritmo eficiente para classificar uma matriz de elementos que possuem uma chave inteira não negativa, por exemplo, uma matriz, às vezes chamada de lista, de inteiros positivos pode ter chaves que são apenas o valor do inteiro como chave ou uma lista de palavras pode ter chaves atribuídas a elas por algum esquema de mapeamento do alfabeto para números inteiros (para classificar em ordem alfabética, por exemplo). Ao contrário de outros algoritmos de classificação, como <a href="#merge">Merge Sort;</a>, a classificação por contagem é um algoritmo de classificação de inteiros, não um algoritmo baseado em comparação. </p>
+<p>O counting sort assume que cada um dos n elementos de entrada em uma lista possui um valor de chave variando de 0 a k , para algum número inteiro k . Para cada elemento na lista, a classificação por contagem determina o número de elementos que são menores que ele. A classificação por contagem pode usar essas informações para colocar o elemento diretamente no slot correto da matriz de saída. </p>
+
+<p>A classificação por contagem usa três listas:</p>
+
+<li> A[0,1, ...,n] a lista de entrada. </li>
+<li> B[0,1, ...,n] a lista de saída. </li>
+<li> C[0,1, ...,k] uma matriz de memória temporária. </li>
+
+<h3>Como funciona?</h3>
+
+<li> O código calcula o mínimo e o máximo do array A para definir k= max - min + 1. </li>
+<li> Para todos os elementos em A[i], 0 <= i <= n - 1, o Count sort, incrementa o valor C[A[i]-min] em um. Por exemplo, considere que o valor 1 na matriz A aparece 8 vezes o valor C [1] = 8. </li>
+<li> Atualize o status de C com C[i] = C[i] + C[i-1] , 1 <= i <=k. </li>
+<li> Classifica A em B de acordo com C[A[i]], 1<=i<=k e diminua o valor de C[A[i]] após cada atualização. </li>
+
+<span class="image main"><img src="images/count1.gif" alt="" /></span>
+<br>
+
+<h3>Complexidade</h3>
+<li>Caso Médio: Θ(n+k)</li>
+<li>Melhor Caso: Θ(n+k)</li>
+<li>Pior Caso: Θ(n+k) </li>
+
+<br>
+
+<h3>Código do Counting Sort</h3>
+<pre>
+	<code>
+public static void countSort(int array[], int size) {
+int[] output = new int[size + 1];
+int max = array[0];
+for (int i = 1; i < size; i++) {
+if (array[i] > max) {
+max = array[i];
+}
+}
+int[] count = new int[max + 1];
+for (int i = 0; i < max; ++i) {
+count[i] = 0;
+}
+for (int i = 0; i < size; i++) {
+count[array[i]]++;
+}
+for (int i = 1; i <= max; i++) {
+count[i] += count[i - 1];
+}
+
+for (int i = size - 1; i >= 0; i--) {
+output[count[array[i]] - 1] = array[i];
+count[array[i]]--;
+}
+for (int i = 0; i < size; i++) {
+array[i] = output[i];
+}
+}
+</code>
+</pre>
+<table>
+<tr>
+<th colspan="5" class="align-center">COUNTING SORT</th>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>100.000</td>
+<td>250.000</td>
+<td>500.000</td>
+<td>1.000.000</td>
+</tr>
+<tr>
+<td>CASO MÉDIO</td>
+<td>0,0091879</td>
+<td>0,005464</td>
+<td>0,0058659</td>
+<td>0,0228935</td>
+</tr>
+<tr>
+<td>MELHOR CASO</td>
+<td>0,001927</td>
+<td>0,0053957</td>
+<td>0,0044642</td>
+<td>0,0266273</td>
+</tr>
+<tr>
+<td>PIOR CASO</td>
+<td>0,014158</td>
+<td>0,0018607</td>
+<td>0,0032986</td>
+<td>0,0049884</td>
+</tr>
+</table>
+	<span class="image main"><img src="images/grafico_count.png" alt="" /></span>
+	<p>Os valores apresentados acima estão em <b>segundos</b>, referente ao processamento de cada quantidade de elementos inserida no vetor</p>					
+
+
 
 					</article>
 
 
 				<article id="compare">
-					<h3 class="major">Comparação entre os algoritmos</h3>
+					<h4 class="major">Comparação entre a implementação dos algoritmos</h4>
 					<span class="image main"><img src="images/sorts.gif" alt="" /></span>
 					<p>Analisando os 10 algoritmos de ordenação nesse site, foi feita uma comparação gráfica entre eles. Sendo uma comparação de todos os algoritmos em caso médio, melhor caso e pior caso.</p>
 					<p>A análise foi feita para os seguintes códigos:</p>
@@ -813,7 +998,7 @@ public static void heapify(int[] arr, int n, int i) {
 					<li><a href="#shell">Shell Sort;</a></li>
 					<li><a href="#heap">Heap Sort;</a></li>
 					<li><a href="#bucket">Bucket Sort;</a></li>
-					<li><a href="#count">Count Sort.</a></li>
+					<li><a href="#count">Counting Sort.</a></li>
 
 					<br>
 					<h3>Comparação caso médio</h3>
@@ -875,7 +1060,7 @@ public static void heapify(int[] arr, int n, int i) {
 			  <td>0,3027816</td>
 		</tr>
 		<tr>
-			<td>Count Sort</td>
+			<td>Counting Sort</td>
 			<td>0,0091879</td>
 			  <td>0,005464</td>
 			  <td>0,0058659</td>
@@ -991,7 +1176,7 @@ public static void heapify(int[] arr, int n, int i) {
 			  <td>0,0652403</td>
 		</tr>
 		<tr>
-			<td>Count Sort</td>
+			<td>Counting Sort</td>
 			<td>0,001927</td>
 			  <td>0,0053957</td>
 			  <td>0,0044642</td>
@@ -1106,7 +1291,7 @@ public static void heapify(int[] arr, int n, int i) {
 			  <td>0,022157</td>
 		</tr>
 		<tr>
-			<td>Count Sort</td>
+			<td>Counting Sort</td>
 			<td>0,014158</td>
 			  <td>0,0018607</td>
 			  <td>0,0032986</td>
