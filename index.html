@@ -54,7 +54,7 @@
 
 								</article>
 							<article id="sobre">
-								<h3 class="major">O que são algoritmos de ordenação?</h3>
+								<h4 class="major">O que são algoritmos de ordenação?</h4>
 								<p>Algoritmo de ordenação, em ciência da computação, é um algoritmo que coloca os elementos de uma dada sequência em uma certa ordem. Em outras palavras efetua sua ordenação completa ou parcial. O objetivo da ordenação é facilitar a recuperação dos dados de uma lista.</p>
 								<p></p>
 								<p></p>
@@ -695,10 +695,95 @@ public static void shellSort(int[] vetor, int quantidade) {
 				</article>
 				<article id="heap">
 					<h3 class="major">Heap Sort</h3>
-					<span class="image main"><img src="images/sorts.gif" alt="" /></span>
-					<p>Heap</p>
-					
-					</article>
+					<span class="image main"><img src="images/heap.gif" alt="" /></span>
+					<p>O heapsort utiliza uma estrutura de dados chamada heap, para ordenar os elementos à medida que os insere na estrutura. Assim, ao final das inserções, os elementos podem ser sucessivamente removidos da raiz da heap, na ordem desejada, lembrando-se sempre de manter a propriedade de max-heap.</p>
+					<p>A heap pode ser representada como uma árvore (uma árvore binária com propriedades especiais) ou como um vetor. Para uma ordenação decrescente, deve ser construída uma heap mínima (o menor elemento fica na raiz). Para uma ordenação crescente, deve ser construído uma heap máxima (o maior elemento fica na raiz).</p>
+					<h3>Complexidade</h3>
+					<li>Caso Médio: Θ(n log2 n)</li>
+					<li>Melhor Caso: Θ(n log2 n) </li>
+					<li>Pior Caso: Θ(n log2 n) </li>
+					<br>
+					<h3>Código do Heap Sort</h3>
+					<pre>
+						<code>
+public static void heapSort(int[] vetor) {
+	int n = vetor.length;
+	for (int i = n / 2 - 1; i >= 0; i--) {
+		heapify(vetor, n, i);
+	}
+	for (int i = n - 1; i >= 0; i--) {
+		int temp = vetor[0];
+		vetor[0] = vetor[i];
+		vetor[i] = temp;
+
+		heapify(vetor, i, 0);
+	}
+}
+
+public static void heapify(int[] arr, int n, int i) {
+	int largest = i; 
+	int l = 2 * i + 1;
+	int r = 2 * i + 2; 
+
+	if (l < n && arr[l] > arr[largest]) {
+		largest = l;
+	}
+
+	if (r < n && arr[r] > arr[largest]) {
+		largest = r;
+	}
+
+	if (largest != i) {
+		int swap = arr[i];
+		arr[i] = arr[largest];
+		arr[largest] = swap;
+
+		heapify(arr, n, largest);
+	}
+}
+</code>
+</pre>
+<table>
+<tr>
+<th colspan="5" class="align-center">SHELL SORT</th>
+</tr>
+<tr>
+	<td>&nbsp;</td>
+	<td>100.000</td>
+	<td>250.000</td>
+	<td>500.000</td>
+	<td>1.000.000</td>
+</tr>
+<tr>
+	<td>CASO MÉDIO</td>
+	<td>0,0169982</td>
+	  <td>0,0346877</td>
+	  <td>0,0693434</td>
+	  <td>0,1548323</td>
+</tr>
+<tr>
+	<td>MELHOR CASO</td>
+	<td>0,0084088</td>
+	  <td>0,0249867</td>
+	  <td>0,0426179</td>
+	  <td>0,0895642</td>
+</tr>
+<tr>
+	<td>PIOR CASO</td>
+	<td>0,0076906</td>
+	  <td>0,0264615</td>
+	  <td>0,0416095</td>
+	  <td>0,0900251</td>
+</tr>
+</table>
+						<span class="image main"><img src="images/grafico_heap.png" alt="" /></span>
+						<p>Os valores apresentados acima estão em <b>segundos</b>, referente ao processamento de cada quantidade de elementos inserida no vetor</p>					
+
+
+
+
+				
+				</article>
 
 				<article id="bucket">
 					<h2 class="major">Bucket Sort</h2>
