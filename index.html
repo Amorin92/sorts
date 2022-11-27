@@ -1,0 +1,1102 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>ALGORITMOS DE ORDENAÇÃO</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel= "stylesheet" type= "text/css" href= "index.css">
+		<script type="text/javascript" src="index.js" defer></script>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<script type="text/javascript" src="aos.js"></script>
+        <script type="text/javascript" src="base.js"></script>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						
+						<div class="content">
+							<div class="inner" id="header"><span id="first-header">ALGORITMOS DE</span>
+								<span id="second-header">ORDENAÇÃO</span>
+								</div>
+						<nav>
+							<ul>
+								<li><a href="#sobre">Sobre</a></li>
+								<li><a href="#bubble">Bubble Sort</a></li>
+								<li><a href="#merge">Merge Sort</a></li>
+								<li><a href="#insertion">Insertion Sort</a></li>
+							</ul>
+						</nav>
+						<nav>
+							<ul>
+								<li><a href="#selection">Selection Sort</a></li>
+								<li><a href="#quick">Quick Sort</a></li>
+								<li><a href="#radix">Radix</a></li>
+								<li><a href="#shell">Shell Sort</a></li>
+							</ul>
+						</nav>
+						<nav>
+							<ul>
+								<li><a href="#heap">Heap Sort</a></li>
+								<li><a href="#bucket">Bucket Sort</a></li>
+								<li><a href="#count">Count Sort</a></li>
+								<li><a href="#compare">comparação</a></li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+								</article>
+							<article id="sobre">
+								<h3 class="major">O que são algoritmos de ordenação?</h3>
+								<p>Algoritmo de ordenação, em ciência da computação, é um algoritmo que coloca os elementos de uma dada sequência em uma certa ordem. Em outras palavras efetua sua ordenação completa ou parcial. O objetivo da ordenação é facilitar a recuperação dos dados de uma lista.</p>
+								<p></p>
+								<p></p>
+								<p></p>
+								<p></p>
+								<p></p>
+								<p></p>
+								
+								</article>
+
+							<article id="bubble">
+								<h2 class="major">Bubble Sort</h2>
+								<p>A classificação por bolha, ou Bubble Sort, é um algoritmo básico para organizar uma sequência de números ou outros elementos na ordem correta. O método funciona examinando cada conjunto de elementos adjacentes na string, da esquerda para a direita, trocando suas posições se estiverem fora de ordem. O algoritmo então repete esse processo até que possa percorrer toda a string e não encontrar dois elementos que precisem ser trocados.</p>
+								<p>Como funciona a sua comparação?</p>
+								<span class="image main"><img src="images/bubble.jpg" alt="" /></span>
+								<p></p>
+								<p>Código do Bubble Sort</p>
+								<pre>
+									<code>
+private static void bubbleSort(int vetor[]) {
+	boolean troca = true;
+	int aux;
+		while (troca) {
+		troca = false;
+		for (int i = 0; i < vetor.length - 1; i++) {
+			if (vetor[i] > vetor[i + 1]) {
+			aux = vetor[i];
+			vetor[i] = vetor[i + 1];
+			vetor[i + 1] = aux;
+			troca = true;
+			}
+		}
+	}
+}
+		</code>
+	</pre>
+	<table>
+		<tr>
+		<th colspan="5" class="align-center">BUBBLE SORT</th>
+		</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>100.000</td>
+				<td>250.000</td>
+			  <td>500.000</td>
+				<td>1.000.000</td>
+			</tr>
+			<tr>
+				<td>CASO MÉDIO</td>
+				<td>42,2892478</td>
+			  <td>223,3793075</td>
+			  <td>1.334,3496636</td>
+			  <td>2.598,9724951</td>
+			</tr>
+			<tr>
+				<td>MELHOR CASO</td>
+				<td>0,0003417</td>
+				<td>0,000661</td>
+				<td>0,0025173</td>
+				<td>0.0017465</td>
+			</tr>
+			<tr>
+				<td>PIOR CASO</td>
+				<td>23,94789</td>
+				<td>238,7104846</td>
+				<td>958,4714887</td>
+				<td>1640,931</td>
+			</tr>
+		</table>
+		<span class="image main"><img src="images/grafico_bubble.png" alt="" /></span>
+		<p>Os valores apresentados acima estão em <b>segundos</b>, referente ao processamento de cada quantidade de elementos inserida no vetor</p>					
+	</article>
+
+
+							<article id="merge">
+								<h2 class="major">Merge Sort</h2>
+								<span class="image merge"><img src="images/Merge_sort_animation2.gif" alt="" /></span>
+								<p>
+									O merge sort, ou ordenação por mistura, é um exemplo de algoritmo de ordenação por comparação do tipo dividir-para-conquistar.
+								</p>
+								<p>
+									Sua ideia básica consiste em Dividir (o problema em vários subproblemas e resolver esses subproblemas através da recursividade) e Conquistar (após todos os subproblemas terem sido resolvidos ocorre a conquista que é a união das resoluções dos subproblemas). Como o algoritmo Merge Sort usa a recursividade, há um alto consumo de memória e tempo de execução, tornando esta técnica não muito eficiente em alguns problemas.
+								</p>
+								<h3>Algoritmo</h3>
+								<p>
+									Os três passos úteis dos algoritmos de divisão e conquista, ou divide and conquer, que se aplicam ao merge sort são:
+								</p>
+								<li>
+									Dividir: Calcula o ponto médio do sub-arranjo, o que demora um tempo constante <img src="images/teta(1).svg">;
+								</li>
+								<li>
+									Conquistar: Recursivamente resolve dois subproblemas, cada um de tamanho n/2, o que contribui com <img src="images/2t.svg"> para o tempo de execução;
+								</li>
+								<li>
+									Combinar: Unir os sub-arranjos em um único conjunto ordenado, que leva o tempo <img src="images/teta(n).svg">
+								</li>
+								<p><img src="images/formula teta.svg"></p>
+								<h3>Complexidade</h3>
+								<li>Complexidade de tempo: <img src="images/teta logn.svg"> </li>
+								<li>Complexidade de espaço: <img src="images/teta(n).svg"></li>
+								<br>
+								<h3>Código do Merge Sort</h3>
+								<pre>
+									<code>
+public static void mergeSort(int[] vetor, int tamanho) {
+    int elementos = 1;
+    int inicio, meio, fim;
+
+    while (elementos < tamanho) {
+            inicio = 0;
+            while (inicio + elementos < tamanho) {
+                meio = inicio + elementos;
+                fim = inicio + 2 * elementos;
+                if (fim > tamanho) {
+                    fim = tamanho;
+                }
+                intercala(vetor, inicio, meio, fim);
+                inicio = fim;
+            }
+            elementos = elementos * 2;
+        }
+    }
+
+public static void intercala(int[] vetor, int inicio, int meio, int fim) {
+        int novoVetor[] = new int[fim - inicio];
+        int i = inicio;
+        int m = meio;
+        int pos = 0;
+        while (i < meio && m < fim) {
+            if (vetor[i] <= vetor[m]) {
+                novoVetor[pos] = vetor[i];
+                pos = pos + 1;
+                i = i + 1;
+            } else {
+                novoVetor[pos] = vetor[m];
+                pos = pos + 1;
+                m = m + 1;
+            }
+        }
+        while (i < meio) {
+            novoVetor[pos] = vetor[i];
+            pos = pos + 1;
+            i = i + 1;
+        }
+        while (m < fim) {
+            novoVetor[pos] = vetor[m];
+            pos = pos + 1;
+            m = m + 1;
+        }
+        for (pos = 0, i = inicio; i < fim; i++, pos++) {
+            vetor[i] = novoVetor[pos];
+        }
+    }
+		</code>
+	</pre>
+	<table>
+		<tr>
+		<th colspan="5" class="align-center">MERGE SORT</th>
+		</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>100.000</td>
+				<td>250.000</td>
+			  <td>500.000</td>
+				<td>1.000.000</td>
+			</tr>
+				<tr>
+					<td>CASO MÉDIO</td>
+					<td>0,0382017</td>
+					  <td>0,0326185</td>
+					  <td>0,0715466</td>
+					  <td>0,1353109</td>
+				</tr>
+				<tr>
+					<td>MELHOR CASO</td>
+					<td>0,0071997</td>
+					  <td>0,0141859</td>
+					  <td>0,0329194</td>
+					  <td>0,0782792</td>
+				</tr>
+				<tr>
+					<td>PIOR CASO</td>
+					<td>0,0068417</td>
+					  <td>0,0115538</td>
+					  <td>0,0315389</td>
+					  <td>0,0520813</td>
+				</tr>
+		</table>
+		<span class="image main"><img src="images/grafico_merge.png" alt="" /></span>
+		<p>Os valores apresentados acima estão em <b>segundos</b>, referente ao processamento de cada quantidade de elementos inserida no vetor</p>					
+	
+
+
+							</article>
+
+						</article>
+						<article id="insertion">
+							<h2 class="major">Insertion Sort</h2>
+							<span class="image main"><img src="images/insertion.gif" alt="" /></span>
+							<p>Insertion Sort, ou ordenação por inserção, é o algoritmo de ordenação que, dado uma estrutura (array, lista) constrói uma matriz final com um elemento de cada vez, uma inserção por vez. Assim como algoritmos de ordenação quadrática, é bastante eficiente para problemas com pequenas entradas, sendo o mais eficiente entre os algoritmos desta ordem de classificação.</p>
+							<p>Podemos fazer uma comparação do Insertion Sort com o modo de como algumas pessoas organizam um baralho num jogo de cartas. Imagine que você está jogando cartas. Você está com as cartas na mão e elas estão ordenadas. Você recebe uma nova carta e deve colocá-la na posição correta da sua mão de cartas, de forma que as cartas obedeçam a ordenação.</p>
+							<p>A cada nova carta adicionada a sua mão de cartas, a nova carta pode ser menor que algumas das cartas que você já tem na mão ou maior, e assim, você começa a comparar a nova carta com todas as cartas na sua mão até encontrar sua posição correta. Você insere a nova carta na posição correta, e, novamente, sua mão é composta de cartas totalmente ordenadas. Então, você recebe outra carta e repete o mesmo procedimento. Então outra carta, e outra, e assim por diante, até você não receber mais cartas.</p>
+							<p>Esta é a ideia por trás da ordenação por inserção. Percorra as posições do array, começando com o índice 1 (um). Cada nova posição é como a nova carta que você recebeu, e você precisa inseri-la no lugar correto no subarray ordenado à esquerda daquela posição.</p>
+							<h3>Complexidade</h3>
+							<li>Caso Médio: Θ(n²) </li>
+							<li>Melhor Caso: Θ(n) </li>
+							<li>Pior Caso: Θ(n²) </li>
+							<br>
+							<h3>Vantagens e Desvantagens</h3>
+								<h4>Vantagens</h4>
+							<li>É o método a ser utilizado quando o arquivo está "quase" ordenado</li>
+							<li>É um bom método quando se desejar adicionar poucos elementos em um arquivo já ordenado, pois seu custo é linear.</li>
+							<li>O algoritmo de ordenação por inserção é estável.</li>
+							<br>
+								<h4>Desvantagens</h4>
+							<li>Alto custo de movimentação de elementos no vetor.</li>
+							<br>
+							<h3>Código do Insertion Sort</h3>
+							<pre>
+								<code>
+public static void insertionSort(int[] vetor) {
+	int j;
+	int key;
+	int i;
+		for (j = 1; j < vetor.length; j++) {
+		key = vetor[j];
+		for (i = j - 1; (i >= 0) && (vetor[i] > key); i--) {
+		vetor[i + 1] = vetor[i];
+		}
+		vetor[i + 1] = key;
+		}
+}
+	</code>
+</pre>
+<table>
+	<tr>
+	<th colspan="5" class="align-center">INSERTION SORT</th>
+	</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>100.000</td>
+			<td>250.000</td>
+		    <td>500.000</td>
+			<td>1.000.000</td>
+		</tr>
+		<tr>
+			<td>CASO MÉDIO</td>
+			<td>0,8990583</td>
+		    <td>6,1620409</td>
+		    <td>24,4494986</td>
+		    <td>106,802170</td>
+		</tr>
+		<tr>
+			<td>MELHOR CASO</td>
+			<td>0,0005125</td>
+			<td>0,0005884</td>
+			<td>0,0015227</td>
+			<td>0,0026088</td>
+		</tr>
+		<tr>
+			<td>PIOR CASO</td>
+			<td>1,962827</td>
+			<td>12,60431</td>
+			<td>50,56349</td>
+			<td>213,6340</td>
+		</tr>
+	</table>
+	<span class="image main"><img src="images/grafico_insertion.png" alt="" /></span>
+	<p>Os valores apresentados acima estão em <b>segundos</b>, referente ao processamento de cada quantidade de elementos inserida no vetor</p>					
+
+							
+							</article>
+
+						<article id="selection">
+							<h2 class="major">Selection Sort</h2>
+							<span class="image main"><img src="images/selection.gif" alt="" /></span>
+							<p>O SelectionSort guarda a posição do menor elemento na variável “menor” e percorre o array procurando por um valor menor. Caso este valor seja encontrado então a variável “menor” recebe a posição deste valor. Por último é checado se a posição do menor elemento é diferente da posição atual, se isso for verdade então é feita uma troca de valores, colocando o menor elemento na frente.</p>
+							<br>
+							<h3>Complexidade</h3>
+							<p>O selection sort compara a cada interação um elemento com os outros, visando encontrar o menor. Dessa forma, podemos entender que não existe um melhor caso mesmo que o vetor esteja ordenado ou em ordem inversa serão executados os dois laços do algoritmo, o externo e o interno. A complexidade deste algoritmo será sempre O(n^2)</p>
+							<li>Caso Médio: Θ(n²) </li>
+							<li>Melhor Caso: Θ(n²) </li>
+							<li>Pior Caso: Θ(n²) </li>
+							<br>
+							<h3>Vantagens e Desvantagens</h3>
+								<h4>Vantagens</h4>
+							<li>Ele é um algoritmo simples de ser implementado em comparação aos demais.</li>
+							<li>Não necessita de um vetor auxiliar (in-place).</li>
+							<li>Por não usar um vetor auxiliar para realizar a ordenação, ele ocupa menos memória.</li>
+							<li>Ele é uns dos mais velozes na ordenação de vetores de tamanhos pequenos.</li>
+							<br>
+								<h4>Desvantagens</h4>
+							<li>Ele é um dos mais lentos para vetores de tamanhos grandes.</li>
+							<li>Ele não é estável.</li>
+							<li>Ele faz sempre ((n²-n)/2) comparações, independentemente do vetor estar ordenado ou não.</li>
+							<br>
+							<h3>Código do Selection Sort</h3>
+							<pre>
+								<code>
+public static void selectionSort(int[] array) {
+	for (int fixo = 0; fixo < array.length - 1; fixo++) {
+		int menor = fixo;
+								
+	for (int i = menor + 1; i < array.length; i++) {
+		if (array[i] < array[menor]) {
+		menor = i;
+			}
+		}
+		if (menor != fixo) {
+		int t = array[fixo];
+		array[fixo] = array[menor];
+		array[menor] = t;
+		}
+	}
+}
+	</code>
+</pre>
+<table>
+	<tr>
+	<th colspan="5" class="align-center">SELECION SORT</th>
+	</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>100.000</td>
+			<td>250.000</td>
+		    <td>500.000</td>
+			<td>1.000.000</td>
+		</tr>
+		<tr>
+			<td>CASO MÉDIO</td>
+			<td>3,2590903</td>
+		      <td>20,0040132</td>
+		      <td>85,7108294</td>
+		      <td>326,5103246</td>
+		</tr>
+		<tr>
+			<td>MELHOR CASO</td>
+			<td>3,2358392</td>
+			<td>20,245482</td>
+			<td>83,7553507</td>
+			<td>327,1019099</td>
+		</tr>
+		<tr>
+			<td>PIOR CASO</td>
+			<td>10,417824</td>
+			<td>64,1275469</td>
+			<td>264,3673142</td>
+			<td>1.025,6812595</td>
+		</tr>
+	</table>
+	<span class="image main"><img src="images/grafico_selection.png" alt="" /></span>
+	<p>Os valores apresentados acima estão em <b>segundos</b>, referente ao processamento de cada quantidade de elementos inserida no vetor</p>					
+
+
+						</article>
+
+
+						<article id="quick">
+							<h2 class="major">Quick Sort</h2>
+							<span class="image main"><img src="images/quick.gif" alt="" /></span>
+							<p>O quicksort adota a estratégia de divisão e conquista. A estratégia consiste em rearranjar as chaves de modo que as chaves "menores" precedam as chaves "maiores". Em seguida o quicksort ordena as duas sublistas de chaves menores e maiores recursivamente até que a lista completa se encontre ordenada.</p>
+							<p>Os passos são:</p>
+
+								<li>Escolha um elemento da lista, denominado pivô;</li>
+								<li>Particiona: rearranje a lista de forma que todos os elementos anteriores ao pivô sejam menores que ele, e todos os elementos posteriores ao pivô sejam maiores que ele. Ao fim do processo o pivô estará em sua posição final e haverá duas sub listas não ordenadas. Essa operação é denominada partição;</li>
+								<li>Recursivamente ordene a sub lista dos elementos menores e a sub lista dos elementos maiores;</li>
+
+							<p>O caso base da recursão são as listas de tamanho zero ou um, que estão sempre ordenadas. O processo é finito, pois a cada iteração pelo menos um elemento é posto em sua posição final e não será mais manipulado na iteração seguinte.</p>
+
+							<p>A escolha do pivô e os passos do Particiona podem ser feitos de diferentes formas e a escolha de uma implementação específica afeta fortemente a performance do algoritmo.</p><br>
+							<br>
+							<h3>Complexidade</h3>
+							<li>Caso Médio: Θ(n log n) </li>
+							<li>Melhor Caso: Θ(n log n) </li>
+							<li>Pior Caso: Θ(n²) </li>
+							<br>
+								<p>O quick sort é uma versão optimizada de uma árvore binária ordenada. Em vez de introduzir itens sequencialmente numa árvore explicita, o quicksort organiza-os correntemente na árvore onde está implícito, fazendo-o com chamadas recursivas à mesma. O algoritmo faz exactamente as mesmas comparações, mas com uma ordem diferente.</p>
+							<br>
+							<h3>Código do Quick Sort</h3>
+							<pre>
+								<code>
+public static void quickSort(int[] A){        
+	quickSort(A, 0, A.length - 1);
+}
+								
+private static void quickSort(int[] A, int inicio, int fim){        
+	if(inicio < fim){
+	int q = partition(A, inicio, fim);
+	quickSort(A, inicio, q - 1);
+	quickSort(A, q + 1, fim);            
+	}
+}
+private static int partition(int[] A, int inicio, int fim){
+	Random rnd = new Random();
+	int randomIndex = rnd.nextInt(fim - inicio + 1) + inicio;
+	swap(A, randomIndex, fim);
+	int pivo = A[fim];
+	int i = inicio - 1;
+		for(int j = inicio; j <= fim - 1; j++){
+		if(A[j] <= pivo){
+		i = i + 1;
+		swap(A, i, j);
+			}
+		}
+	swap(A, i + 1, fim);
+	return i + 1;
+}
+
+private static void swap(int[] A, int i, int j){
+	int temp = A[i];
+	A[i] = A[j];
+	A[j] = temp;
+}
+	</code>
+</pre>
+<table>
+	<tr>
+	<th colspan="5" class="align-center">QUICK SORT</th>
+	</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>100.000</td>
+			<td>250.000</td>
+		    <td>500.000</td>
+			<td>1.000.000</td>
+		</tr>
+		<tr>
+			<td>CASO MÉDIO</td>
+			<td>0,0215727</td>
+		      <td>0,0251514</td>
+		      <td>0,0529094</td>
+		      <td>0,1076717</td>
+		</tr>
+		<tr>
+			<td>MELHOR CASO</td>
+			<td>0,0054925</td>
+			<td>0,0142215</td>
+			<td>0,0292828</td>
+			<td>0,0596236</td>
+		</tr>
+		<tr>
+			<td>PIOR CASO</td>
+			<td>0,0060233</td>
+			<td>0,0152141</td>
+			<td>0,0317578</td>
+			<td>0,0632131</td>
+		</tr>
+	</table>
+	<span class="image main"><img src="images/grafico_quick.png" alt="" /></span>
+	<p>Os valores apresentados acima estão em <b>segundos</b>, referente ao processamento de cada quantidade de elementos inserida no vetor</p>					
+
+						
+						</article>
+
+					<article id="radix">
+						<h2 class="major">RADIX</h2>
+						<span class="image main"><img src="images/radix.gif" alt="" /></span>
+						<p>O Radix sort é um algoritmo de ordenação rápido e estável que pode ser usado para ordenar itens que estão identificados por chaves únicas. Cada chave é uma cadeia de caracteres ou número, e o radix sort ordena estas chaves em qualquer ordem relacionada com a lexicografia.</p>
+
+						<p>Na ciência da computação, radix sort é um algoritmo de ordenação que ordena inteiros processando dígitos individuais. Como os inteiros podem representar strings compostas de caracteres (como nomes ou datas) e pontos flutuantes especialmente formatados, radix sort não é limitado somente a inteiros.</p>
+					
+
+						<p>O RadixSort é um algoritmo de ordenação utilizado em computadores que permitem
+							acessar o código binário que representa os caracteres dos números que compõem a sequência
+							a ser ordenada (MANBER, 1989).</p>
+						<p>Cormen et al. (2009) afirma que o RadixSort é um algoritmo de ordenação rápido e
+							estável que pode ser usado para ordenar itens que estão identificados por chaves únicas e que
+							cada chave é uma cadeia de caracteres ou número. Nos computadores, estas chaves são os
+							números binários usados para representar todo caractere a partir de um conjunto de dados
+							binários.</p>
+							<p>Embora os sistemas operacionais que permitem o acesso ao código binário não sejam
+								convencionais, não será preciso este acesso para implementar o algoritmo, pois a ideia básica
+								do RadixSort será aplicada na matriz de incidência e não no código binário. A grande
+								vantagem desse algoritmo é que ele ordena em tempo linear, ou seja, Θ(n), qualquer outro 
+								algoritmo de ordenação que não goza do artifício de acessar o código binário ordena,
+								necessariamente, em pelo menos Θ(n.log n) operações (MANBER, 1989)</p>
+					
+					<h3>Complexidade assintótica</h3>
+					<p>A complexidade no tempo do algoritmo é Θ(nk) e a complexidade no espaço: Θ(n+s), onde:</p>
+						<li>n = número de elementos.</li>
+						<li>k = = tamanho string.</li>
+						<li>s  = tamanho do alfabeto.</li>
+					
+						<br>
+							<h3>Complexidade</h3>
+							<li>Caso Médio: Θ(d(n + k))	</li>
+							<li>Melhor Caso: Θ(d(n + k)) </li>
+							<li>Pior Caso: Θ(d(n + k)) </li>
+						<br>
+						<h3>Código do RADIX</h3>
+						<pre>
+							<code>
+public static void radix(int[] vetor) {
+	for (int digit = 0; digit < 3; digit++) {
+	int power = (int) Math.pow(10, digit + 1);
+							
+	int z[][] = new int[vetor.length][10];
+	int n[] = new int[10];
+							
+	for (int i = 0; i < vetor.length; i++) {
+	int num = vetor[i];
+	z[n[(num % power) / (power / 10)]][(num % power) / (power / 10)] = num;
+	n[(num % power) / (power / 10)]++;
+							
+	}
+	int c = 0;
+	for (int i = 0; i < 10; i++) {
+							
+	for (int j = 0; j < vetor.length; j++) {
+	if (j < n[i]) {
+	vetor[c] = z[j][i];
+	c++;
+	} else {
+		break;
+				}
+			}
+		}
+							
+	}
+}
+</code>
+</pre>
+<table>
+<tr>
+<th colspan="5" class="align-center">QUICK SORT</th>
+</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>100.000</td>
+		<td>250.000</td>
+		<td>500.000</td>
+		<td>1.000.000</td>
+	</tr>
+	<tr>
+		<td>CASO MÉDIO</td>
+		<td>0,0267372</td>
+		  <td>0,0286562</td>
+		  <td>0,0813891</td>
+		  <td>0,1204836</td>
+	</tr>
+	<tr>
+		<td>MELHOR CASO</td>
+		<td>0,0155682</td>
+		  <td>0,0325242</td>
+		  <td>0,0561958</td>
+		  <td>0,1312999</td>
+	</tr>
+	<tr>
+		<td>PIOR CASO</td>
+		<td>0,0129324</td>
+		  <td>0,0330549</td>
+		  <td>0,0629475</td>
+		  <td>0,1292379</td>
+	</tr>
+</table>
+							<span class="image main"><img src="images/grafico_radix.png" alt="" /></span>
+							<p>Os valores apresentados acima estão em <b>segundos</b>, referente ao processamento de cada quantidade de elementos inserida no vetor</p>					
+
+					
+					
+					</article>
+
+
+					<article id="shell">
+						<h2 class="major">Shell Sort</h2>
+						<span class="image merge"><img src="images/shell.gif" alt="" /></span>
+						<p>Criado por Donald Shell em 1959,[1] publicado pela Universidade de Cincinnati, Shell sort é o mais eficiente algoritmo de classificação dentre os de complexidade quadrática. É um refinamento do método de inserção direta.[2] O algoritmo difere do método de inserção direta pelo fato de no lugar de considerar o array a ser ordenado como um único segmento, ele considera vários segmentos sendo aplicado o método de inserção direta em cada um deles.[3] Basicamente o algoritmo passa várias vezes pela lista dividindo o grupo maior em menores. Nos grupos menores é aplicado o método da ordenação por inserção.</p>
+						<h3>Complexidade</h3>
+						<li>Caso Médio: depende da sequencia do gap </li>
+						<li>Melhor Caso: Θ(n log2 n) </li>
+						<li>Pior Caso: Θ(n log2 n) </li>
+						<br>
+						<h3>Código do Shell Sort</h3>
+						<pre>
+							<code>
+public static void shellSort(int[] vetor, int quantidade) {
+	int i, j, value;
+	int gap = 1;
+	while (gap < quantidade) {
+		gap = 3 * gap + 1;
+	}
+	while (gap > 1) {
+		gap /= 3;
+		for (i = gap; i < quantidade; i++) {
+			value = vetor[i];
+			j = i - gap;
+			while (j >= 0 && value < vetor[j]) {
+				vetor[j + gap] = vetor[j];
+				j -= gap;
+			}
+			vetor[j + gap] = value;
+		}
+	}
+}
+</code>
+</pre>
+<table>
+<tr>
+<th colspan="5" class="align-center">SHELL SORT</th>
+</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>100.000</td>
+		<td>250.000</td>
+		<td>500.000</td>
+		<td>1.000.000</td>
+	</tr>
+	<tr>
+		<td>CASO MÉDIO</td>
+		<td>0,0153267</td>
+		  <td>0,0351015</td>
+		  <td>0,0644998</td>
+		  <td>0,1419367</td>
+	</tr>
+	<tr>
+		<td>MELHOR CASO</td>
+		<td>0,0012863</td>
+		  <td>0,0033718</td>
+		  <td>0,0072426</td>
+		  <td>0,0150543</td>
+	</tr>
+	<tr>
+		<td>PIOR CASO</td>
+		<td>0,0019791</td>
+		  <td>0,0053266</td>
+		  <td>0,01179</td>
+		  <td>0,0231433</td>
+	</tr>
+</table>
+							<span class="image main"><img src="images/grafico_shell.png" alt="" /></span>
+							<p>Os valores apresentados acima estão em <b>segundos</b>, referente ao processamento de cada quantidade de elementos inserida no vetor</p>					
+
+					
+					
+					
+					</article>
+
+				</article>
+				<article id="heap">
+					<h3 class="major">Heap Sort</h3>
+					<span class="image main"><img src="images/sorts.gif" alt="" /></span>
+					<p>Heap</p>
+					
+					</article>
+
+				<article id="bucket">
+					<h2 class="major">Bucket Sort</h2>
+					<span class="image main"><img src="images/sorts.gif" alt="" /></span>
+					<p>Bucket</p>
+				</article>
+
+				<article id="count">
+					<h2 class="major">Count Sort</h2>
+					<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
+					<p>count</p>
+
+					</article>
+
+
+				<article id="compare">
+					<h3 class="major">Comparação entre a implementação dos algoritmos</h3>
+					<span class="image main"><img src="images/sorts.gif" alt="" /></span>
+					<p>Analisando os 10 algoritmos de ordenação nesse site, foi feita uma comparação gráfica entre eles. Sendo uma comparação de todos os algoritmos em caso médio, melhor caso e pior caso.</p>
+					<p>A análise foi feita para os seguintes códigos:</p>
+					<li><a href="#bubble">Bubble Sort;</a></li>
+					<li><a href="#insertion">Insertion Sort;</a></li>
+					<li><a href="#selection">Selection Sort;</a></li>
+					<li><a href="#merge">Merge Sort;</a></li>
+					<li><a href="#quick">Quick Sort;</a></li>
+					<li><a href="#radix">Radix;</a></li>
+					<li><a href="#shell">Shell Sort;</a></li>
+					<li><a href="#heap">Heap Sort;</a></li>
+					<li><a href="#bucket">Bucket Sort;</a></li>
+					<li><a href="#count">Count Sort.</a></li>
+
+					<br>
+					<h3>Comparação caso médio</h3>
+					<br>
+					<p>A compração foi dividida em dois gráficos para que fique melhor a visualização da quantidade de segundos para a execução por quantidade de elementos a serem ordenados.</p>
+					<div>
+						
+<table>
+	<tr>
+	<th colspan="5" class="align-center">CASO MÉDIO 1</th>
+	</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>100.000</td>
+			<td>250.000</td>
+			<td>500.000</td>
+			<td>1.000.000</td>
+		</tr>
+		<tr>
+			<td>Merge Sort</td>
+			<td>0,0382017</td>
+			  <td>0,0326185</td>
+			  <td>0,0715466</td>
+			  <td>0,1353109</td>
+		</tr>
+		<tr>
+			<td>Quick Sort</td>
+			<td>0,0215727</td>
+			  <td>0,0251514</td>
+			  <td>0,0529094</td>
+			  <td>0,1076717</td>
+		</tr>
+		<tr>
+			<td>Radix</td>
+			<td>0,0267372</td>
+			  <td>0,0286562</td>
+			  <td>0,0813891</td>
+			  <td>0,1204836</td>
+		</tr>
+		<tr>
+			<td>Shell Sort</td>
+			<td>0,0153267</td>
+			  <td>0,0351015</td>
+			  <td>0,0644998</td>
+			  <td>0,1419367</td>
+		</tr>
+		<tr>
+			<td>Heap Sort</td>
+			<td>0,0169982</td>
+			  <td>0,0346877</td>
+			  <td>0,0693434</td>
+			  <td>0,1548323</td>
+		</tr>
+		<tr>
+			<td>Bucket Sort</td>
+			<td>0,0315158</td>
+			  <td>0,0266823</td>
+			  <td>0,0315869</td>
+			  <td>0,3027816</td>
+		</tr>
+		<tr>
+			<td>Count Sort</td>
+			<td>0,0091879</td>
+			  <td>0,005464</td>
+			  <td>0,0058659</td>
+			  <td>0,0228935</td>
+		</tr>
+	</table>
+
+
+	
+	<span class="image main"><img src="images/grafico_caso_medio1.png" alt="" /></span>
+	<p>Os valores apresentados acima estão em <b>segundos</b>, referente ao processamento de cada quantidade de elementos inserida no vetor</p>					
+
+
+
+
+	<table>
+		<tr>
+		<th colspan="5" class="align-center">CASO MÉDIO 2</th>
+		</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>100.000</td>
+				<td>250.000</td>
+				<td>500.000</td>
+				<td>1.000.000</td>
+			</tr>
+			<tr>
+				  <td>Bubble Sort</td>
+				  <td>42,2892478</td>
+				  <td>223,3793075</td>
+				  <td>1334,3496636</td>
+				  <td>2598,9724951</td>
+			</tr>
+			<tr>
+				  <td>Insertion Sort</td>
+				  <td>0,8990583</td>
+				  <td>6,1620409</td>
+				  <td>24,4494986</td>
+				  <td>106,80217</td>
+			</tr>
+			<tr>
+				  <td>Selection Sort</td>
+				  <td>3,2590903</td>
+				  <td>20,0040132</td>
+				  <td>85,7108294</td>
+				  <td>326,5103246</td>
+			</tr>
+		</table>
+
+		
+		<span class="image main"><img src="images/grafico_caso_medio2.png" alt="" /></span>
+		<p>Os valores apresentados acima estão em <b>segundos</b>, referente ao processamento de cada quantidade de elementos inserida no vetor</p>					
+
+	</div>
+
+
+					<h3>Comparação melhor caso</h3>
+					<br>
+					<p>A compração foi dividida em dois gráficos para que fique melhor a visualização da quantidade de segundos para a execução por quantidade de elementos a serem ordenados.</p>
+					<div>
+						
+<table>
+	<tr>
+	<th colspan="5" class="align-center">MELHOR CASO 1</th>
+	</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>100.000</td>
+			<td>250.000</td>
+			<td>500.000</td>
+			<td>1.000.000</td>
+		</tr>
+		<tr>
+			<td>Merge Sort</td>
+			<td>0,0071997</td>
+			  <td>0,0141859</td>
+			  <td>0,0329194</td>
+			  <td>0,0782792</td>
+		</tr>
+		<tr>
+			<td>Quick Sort</td>
+			<td>0,0054925</td>
+			  <td>0,0142215</td>
+			  <td>0,0292828</td>
+			  <td>0,0596236</td>
+		</tr>
+		<tr>
+			<td>Radix</td>
+			<td>0,0155682</td>
+			  <td>0,0325242</td>
+			  <td>0,0561958</td>
+			  <td>0,1312999</td>
+		</tr>
+		<tr>
+			<td>Shell Sort</td>
+			<td>0,0012863</td>
+			  <td>0,0033718</td>
+			  <td>0,0072426</td>
+			  <td>0,0150543</td>
+		</tr>
+		<tr>
+			<td>Heap Sort</td>
+			<td>0,0084088</td>
+			  <td>0,0249867</td>
+			  <td>0,0426179</td>
+			  <td>0,0895642</td>
+		</tr>
+		<tr>
+			<td>Bucket Sort</td>
+			<td>0,0071938</td>
+			  <td>0,017939</td>
+			  <td>0,0125623</td>
+			  <td>0,0652403</td>
+		</tr>
+		<tr>
+			<td>Count Sort</td>
+			<td>0,001927</td>
+			  <td>0,0053957</td>
+			  <td>0,0044642</td>
+			  <td>0,0266273</td>
+		</tr>
+	</table>
+
+
+	
+	<span class="image main"><img src="images/grafico_melhor_caso1.png" alt="" /></span>
+	<p>Os valores apresentados acima estão em <b>segundos</b>, referente ao processamento de cada quantidade de elementos inserida no vetor</p>					
+
+
+
+
+	<table>
+		<tr>
+		<th colspan="5" class="align-center">MELHOR CASO 2</th>
+		</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>100.000</td>
+				<td>250.000</td>
+				<td>500.000</td>
+				<td>1.000.000</td>
+			</tr>
+			<tr>
+				  <td>Bubble Sort</td>
+				  <td>0,0003417</td>
+				  <td>0,000661</td>
+				  <td>0,0025173</td>
+				  <td>0,0017465</td>
+			</tr>
+			<tr>
+				  <td>Insertion Sort</td>
+				  <td>0,0005125</td>
+				  <td>0,0005884</td>
+				  <td>0,0015227</td>
+				  <td>0,0026088</td>
+			</tr>
+			<tr>
+				  <td>Selection Sort</td>
+				  <td>3,2358392</td>
+				  <td>20,245482</td>
+				  <td>83,7553507</td>
+				  <td>327,1019099</td>
+			</tr>
+		</table>
+
+		
+		<span class="image main"><img src="images/grafico_melhor_caso2.png" alt="" /></span>
+		<p>Os valores apresentados acima estão em <b>segundos</b>, referente ao processamento de cada quantidade de elementos inserida no vetor</p>					
+
+
+
+					<h3>Comparação pior caso</h3>
+					<br>
+					<p>A compração foi dividida em dois gráficos para que fique melhor a visualização da quantidade de segundos para a execução por quantidade de elementos a serem ordenados.</p>
+					<div>
+						
+<table>
+	<tr>
+	<th colspan="5" class="align-center">PIOR CASO 1</th>
+	</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>100.000</td>
+			<td>250.000</td>
+			<td>500.000</td>
+			<td>1.000.000</td>
+		</tr>
+		<tr>
+			<td>Merge Sort</td>
+			<td>0,0068417</td>
+			  <td>0,0115538</td>
+			  <td>0,0315389</td>
+			  <td>0,0520813</td>
+		</tr>
+		<tr>
+			<td>Quick Sort</td>
+			<td>0,0060233</td>
+			  <td>0,0152141</td>
+			  <td>0,0317578</td>
+			  <td>0,0632131</td>
+		</tr>
+		<tr>
+			<td>Radix</td>
+			<td>0,0129324</td>
+			  <td>0,0330549</td>
+			  <td>0,0629475</td>
+			  <td>0,1292379</td>
+		</tr>
+		<tr>
+			<td>Shell Sort</td>
+			<td>0,0019791</td>
+			  <td>0,0053266</td>
+			  <td>0,01179</td>
+			  <td>0,0231433</td>
+		</tr>
+		<tr>
+			<td>Heap Sort</td>
+			<td>0,0076906</td>
+			  <td>0,0264615</td>
+			  <td>0,0416095</td>
+			  <td>0,0900251</td>
+		</tr>
+		<tr>
+			<td>Bucket Sort</td>
+			<td>0,0189336</td>
+			  <td>0,017703</td>
+			  <td>0,0196256</td>
+			  <td>0,022157</td>
+		</tr>
+		<tr>
+			<td>Count Sort</td>
+			<td>0,014158</td>
+			  <td>0,0018607</td>
+			  <td>0,0032986</td>
+			  <td>0,0049884</td>
+		</tr>
+	</table>
+
+
+	
+	<span class="image main"><img src="images/grafico_caso_medio1.png" alt="" /></span>
+	<p>Os valores apresentados acima estão em <b>segundos</b>, referente ao processamento de cada quantidade de elementos inserida no vetor</p>					
+
+
+
+
+	<table>
+		<tr>
+		<th colspan="5" class="align-center">PIOR CASO 2</th>
+		</tr>
+			<tr>
+				<td>&nbsp;</td>
+				<td>100.000</td>
+				<td>250.000</td>
+				<td>500.000</td>
+				<td>1.000.000</td>
+			</tr>
+			<tr>
+				  <td>Bubble Sort</td>
+				  <td>23,94789</td>
+				  <td>238,7104846</td>
+				  <td>958,4714887</td>
+				  <td>1640,931</td>
+			</tr>
+			<tr>
+				  <td>Insertion Sort</td>
+				  <td>1,962827</td>
+				  <td>12,60431</td>
+				  <td>50,56349</td>
+				  <td>213,634</td>
+			</tr>
+			<tr>
+				  <td>Selection Sort</td>
+				  <td>10,417824</td>
+				  <td>64,1275469</td>
+				  <td>264,3673142</td>
+				  <td>1025,6812595</td>
+			</tr>
+		</table>
+
+		
+		<span class="image main"><img src="images/grafico_caso_medio2.png" alt="" /></span>
+		<p>Os valores apresentados acima estão em <b>segundos</b>, referente ao processamento de cada quantidade de elementos inserida no vetor</p>					
+
+
+
+
+				</article>
+					
+			</div>
+
+
+					<footer id="footer">
+						<p class="copyright">ALUNO: RAFAEL AMORIN - IFMS - TSI - 2022</p>
+						<p class="copyright">Análise de algoritmos de ordenação para a disciplina de Estutrura de Dados</p>
+					</footer>
+
+			</div>
+
+			<div id="bg"></div>
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
